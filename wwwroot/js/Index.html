@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="img/pop.png" type="image/png">
+    <title>YHC</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="/boots/css/bootstrap.css" />
+</head>
+<body style="background-color:rgb(30, 30, 30)">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-fixed-top mynav">
+
+            <button class="cinema" onclick="getFilms(); clearActor()"> YourHomeCinema </button>
+            <div style="margin-left:50px">
+                <select class="custom-select alltext" style="background-color: rgb(30,30,30); color:rgb(255, 248, 213)" id="selectgenre" onchange="getFilmGenres(); clearActor()">
+                    <option>Выберите жанр</option>
+                </select>
+            </div>
+            <div style="margin-left:30px">
+                <select class="custom-select alltext" style="background-color: rgb(30,30,30); color:rgb(255, 248, 213)" id="selectactor" onchange="getFilmActors()">
+                    <option>Выберите актёра</option>
+                </select>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!--<p id="counter"></p>-->
+        <div>
+            <dl>
+                <dd id="actor" style="margin-left:50px"> </dd>
+            </dl>
+        </div>
+        <div>
+            <dl>
+                <dd id="films" style="margin-left:50px; display:flex; flex-direction:row; flex-wrap:wrap;"> </dd>
+            </dl>
+        </div>
+        <!--<table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tbody id="films"></tbody>
+        </table>-->
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top" style="background-color:rgb(61, 61, 61)">
+        <img src="img/hotpng.com.png" style="height:40px; background-color:rgb(61, 61, 61)" />
+    </button>
+    <script src="js/lab2.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getGenres();
+        getActors();
+        getFilms();
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: rgb(91, 8, 26);
+    font-size: 20px;
+    margin-left: 30px;
+    font-family: 'Segoe Print';
+}
+
+    a:hover {
+        margin-left: 30px;
+        font-family: 'Segoe Print';
+        color: black;
+    }
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url('../img/cat3.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0;
+    transition: 1s;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+/*----------------------------------------*/
+.mynav {
+    min-height: 90px;
+    background-color: rgb(255, 195, 125);
+}
+@media (max-width : 440px) {
+    .mynav {
+        width: 100%;
+    }
+}
+.alltext {
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    margin-left: 30px;
+    font-family: 'Segoe Print';
+}
+
+.text1 {
+    font-size: 20px;
+    color: black;
+    margin-left: 15px;
+    font-family: 'Segoe Print';
+}
+
+.words {
+    font-family: 'Segoe Print';
+    font-size: 20px;
+    color: rgb(109, 18, 38);
+    font-weight: bold;
+}
+
+.fom1 {
+    border-radius: 15px;
+    width: 900px;
+    height: 300px;
+    background-color: rgba(250, 237, 176, 0.5);
+}
+@media (max-width : 1000px) {
+    .fom1 {
+        width: 450px;
+        height: 600px;
+    }
+}
+@media (max-width : 490px) {
+    .fom1 {
+        width: 90%;
+        height: auto;
+    }
+}
+
+.fom2 {
+    border-radius: 15px;
+    width: 450px;
+    height: 300px;
+    background-color: rgba(250, 237, 176, 0.5);
+}
+@media (max-width : 490px) {
+    .fom2 {
+        width: 90%;
+        height: auto;
+    }
+}
+
+.img1 {
+    border-radius: 5px;
+    margin-top: 25px;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    float: left;
+    height: 250px;
+    width: 350px;
+    object-fit: cover;
+    object-position: center;
+}
+@media (max-width : 490px) {
+    .img1 {
+        width: 90%;
+        height: auto;
+    }
+}
+.butt {
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-top: 10px;
+    width: 370px;
+    height: 50px;
+    font-family: 'Segoe Print';
+    font-size: 30px;
+    background-color: rgb(255, 195, 125);
+    transition: 0.2s;
+}
+
+    .butt:hover {
+        border-radius: 5px;
+        width: 400px;
+        height: 60px;
+        font-family: 'Segoe Print';
+        font-size: 30px;
+        background-color: rgb(230, 154, 74);
+        transition: 0.2s;
+    }
+
+@media (max-width : 490px) {
+    .butt {
+        width: 90%;
+        height: auto;
+        white-space: pre-line;
+        word-wrap: break-word;
+    }
+}
+@media (max-width : 490px) {
+    .butt:hover {
+        width: 90%;
+        height: auto;
+        white-space: pre-line;
+        word-wrap: break-word;
+    }
+}
+
+.fraza {
+    margin-top: 7%;
+    margin-left: 1%;
+    margin-right: 30%;
+    font-family: 'Segoe Print';
+    font-size: 40px;
+    color: rgb(109, 18, 38);
+    font-weight: bold;
+    text-shadow: 5px;
+    word-wrap: break-word;
+}
+
+.form-control {
+    width: 150px;
+    color: antiquewhite;
+    outline-color: burlywood;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: rgb(250, 237, 176);
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(250, 237, 176);
+    border-radius: 10px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(255, 195, 125);
+    }
+
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+    z-index: 99;
+}
+.catt {
+    width: 100px;
+    height: 150px;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    transition: 0.4s;
+    z-index: 99;
+}
+
+@media (max-width : 575px) {
+    .catt {
+        left: 50%;
+        transition: 0.4s;
+        z-index: 99;
+    }
+}
+
+.back {
+    background-color: rgb(255, 195, 125);
+}
+
+.knopka_all {
+    margin-left: 30%;
+    margin-bottom: 15px;
+    color: black;
+    background-color: rgba(236, 210, 185, 0.50);
+}
+
+    .knopka_all:hover {
+        background-color: rgb(220, 185, 151);
+    }
+
+.knopka_logout {
+    color: black;
+    background-color: rgba(236, 210, 185, 0.50);
+}
+
+    .knopka_logout:hover {
+        background-color: rgb(220, 185, 151);
+    }
+
+.enter_block {
+    background-color: rgba(62, 54, 54, .83);
+    position: absolute;
+    right: 7%;
+    width: 25%;
+}
+.homebtn {
+    margin-left: 25px;
+}
+
+.enter {
+    position: absolute;
+    right: 20px;
+}
+
+.reg {
+    position: absolute;
+    right: 90px;
+}
+.mytext {
+    font-family: 'Segoe Print';
+    text-decoration-color: rgb(220, 185, 151);
+    font-size: 30px;
+    background-color: rgb(255, 195, 125);
+}

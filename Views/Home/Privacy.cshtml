@@ -1,0 +1,228 @@
+﻿
+@{
+    ViewData["Title"] = "Карта";
+}
+
+@*<div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXJyb3J5IiwiYSI6ImNrZ2FoM2R0NjAzbmgycnFhb2h5aWozcXIifQ.sSDnuzBzAC6w3yOMr9Clig';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11'
+        });
+    </script>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Display a popup on click</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+
+        #map {
+            position: absolute;
+            top: 90px;
+            bottom: 60px;
+            left: 3%;
+            width: 60%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXJyb3J5IiwiYSI6ImNrZ2FoM2R0NjAzbmgycnFhb2h5aWozcXIifQ.sSDnuzBzAC6w3yOMr9Clig';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: [-20, 35],
+            zoom: 2
+        });
+
+        map.on('load', function () {
+            map.addSource('places', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/Абісинськакішка1.jpg" style="width:100%"/><br /><a class="alltext" style="margin-left:0px"> Абісинська кішка</a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [38.86, 9]
+                            }
+                        },
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/Американськийкерл1.png"  style="width:100%"/><br /><a class="alltext"style="margin-left:0px"> Американський керл </a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [-118.15, 34]
+                            }
+                        },
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/Британськадовгошерста1.jpg" style="width:100%"/><br /><a class="alltext"style="margin-left:0px"> Британська довгошерста </a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [-0.1257400, 51.5085300]
+                            }
+                        },
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/мейнкун1.png" style="width:100%"/><br /><a class="alltext"style="margin-left:0px"> Мейн-Кун </a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [-77.0363700, 38.8951100]
+                            }
+                        },
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/Невськамаскарадна1.jpg" style="width:100%"/><br /><a class="alltext"style="margin-left:0px"> Невська маскарадна </a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [37.6155600, 55.7522200]
+                            }
+                        },
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description':
+                                    '<img src="/img/Регдол1.jpg" style="width:100%"/><br /><a class="alltext"style="margin-left:0px"> Регдол </a><br/>',
+                                'icon': 'veterinary'
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [-87.6500500, 41.8500300]
+                            }
+                        }
+                    ]
+                }
+            });
+            // Add a layer showing the places.
+            map.addLayer({
+                'id': 'places',
+                'type': 'symbol',
+                'source': 'places',
+                'layout': {
+                    'icon-image': '{icon}-15',
+                    'icon-allow-overlap': true,
+                    'icon-size': 1.75
+                }
+            });
+
+            // When a click event occurs on a feature in the places layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            map.on('click', 'places', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.description;
+                map.flyTo({
+                    center: e.features[0].geometry.coordinates
+                });
+
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+    </script>
+
+
+    <div class="container" style="float:right; right:0%; width:33%; height:33%;">
+        <div id="chart1" style="position:absolute;"> </div>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            $.get('/api/Charts/JsonData', function (jsonData) {
+                data = google.visualization.arrayToDataTable(jsonData, false);
+                var option = {
+                    title: "Спiввiдношення порiд та котiв",
+                    width: 600,
+                    height: 400,
+                    is3D: true
+                };
+                chart = new google.visualization.PieChart(document.getElementById('chart1'));
+                chart.draw(data, option);
+            })
+        };
+    </script>
+
+</body>
+</html>
+@*<div class="container">
+    <div id="chart1" style="position: relative; right:0%; width:33%; height:33%;"> </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            $.get('/api/Charts/JsonData', function (jsonData) {
+                data = google.visualization.arrayToDataTable(jsonData, false);
+                var option = {
+                    title: "Співвідношення кількості книжок та мов",
+                    width: 500,
+                    height: 400,
+                    is3D: true
+                };
+                chart = new google.visualization.PieChart(document.getElementById('chart1'));
+                chart.draw(data, option);
+            })
+        };
+    </script>
+}*@

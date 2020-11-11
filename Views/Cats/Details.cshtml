@@ -1,0 +1,39 @@
+﻿@model Web_Lab1_Cats.Cats
+
+@{
+    ViewData["Title"] = "Деталі";
+}
+<h1 style="font-family: 'Segoe Print'; margin-left: 12%">Детальніше про кота </h1>
+<div class="fom1">
+    <img src="~/img/@Html.DisplayFor(modelItem => Model.Photo)" class="img1" />
+    <br />
+    <a class="alltext">
+        @Html.DisplayNameFor(model => model.Name)
+    </a>
+    <a class="text1">
+        @Html.DisplayFor(modelItem => Model.Name)
+    </a><br />
+    <a class="alltext">
+        @Html.DisplayNameFor(model => model.SpeciesId)
+    </a>
+    <a class="text1">
+        @Html.ActionLink(Model.Species.Name, "Details", "Species", new { id = Model.Species.Id, name = Model.Species.Name })
+    </a><br />
+    <a class="alltext">
+        @Html.DisplayNameFor(model => model.Age)
+    </a>
+    <a class="text1">
+        @Html.DisplayFor(modelItem => Model.Age)
+    </a><br />
+    <a class="alltext">
+        @Html.DisplayNameFor(model => model.Info)
+    </a>
+    <a class="text1">
+        @Html.DisplayFor(modelItem => Model.Info)
+    </a><br />
+    
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="words">Редагувати</a> 
+        <a asp-action="Index" class="words">Список всіх котів</a>
+    </div>
